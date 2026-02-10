@@ -3,7 +3,7 @@ name: Publicacion Automatica
 on:
   push:
     tags:
-      - 'v*' # Se activa cuando creas una versión como v1.0
+      - 'v*'
 
 jobs:
   build:
@@ -18,6 +18,9 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+
+      - name: Instalar dependencias
+        run: flutter pub get
 
       - name: Build Android
         run: flutter build apk --release
@@ -35,3 +38,4 @@ jobs:
             build/windows/runner/Release/Prueba.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
