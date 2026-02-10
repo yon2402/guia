@@ -4,18 +4,20 @@ import 'package:flutter/material.dart';
 
 // La función principal que se ejecuta al iniciar la aplicación.
 void main() => runApp(
-    // runApp infla el widget dado y lo adjunta a la pantalla.
-    MaterialApp(
+      // runApp infla el widget dado y lo adjunta a la pantalla.
+      const MaterialApp(
         // MaterialApp es un widget que envuelve varias aplicaciones que siguen los principios de Material Design.
-        home: PeopleCounter() // Establece el widget PeopleCounter como la ruta principal (la pantalla de inicio).
-    )
-);
+        home:
+            PeopleCounter(), // Establece el widget PeopleCounter como la ruta principal (la pantalla de inicio).
+      ),
+    );
 
 // Define una nueva clase de widget con estado llamada PeopleCounter.
 class PeopleCounter extends StatefulWidget {
+  const PeopleCounter({super.key});
   // Sobrescribe el método createState para crear el estado mutable para este widget.
   @override
-  _PeopleCounterState createState() => _PeopleCounterState();
+  State<PeopleCounter> createState() => _PeopleCounterState();
 }
 
 // La clase de estado para el widget PeopleCounter.
@@ -46,8 +48,8 @@ class _PeopleCounterState extends State<PeopleCounter> {
     return Scaffold(
       // La barra de aplicación que se muestra en la parte superior del Scaffold.
       appBar: AppBar(
-          // El título que se muestra en la barra de aplicación.
-          title: Text("Contador de Personas")
+        // El título que se muestra en la barra de aplicación.
+        title: const Text("Contador de Personas"),
       ),
       // El cuerpo principal del Scaffold.
       body: Column(
@@ -56,24 +58,25 @@ class _PeopleCounterState extends State<PeopleCounter> {
           // Un widget que añade relleno alrededor de su hijo.
           Padding(
             // Establece un relleno de 16 píxeles en todos los lados.
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             // Un campo de texto para que el usuario introduzca el nombre.
             child: TextField(
               // Asigna el controlador de texto al campo de texto.
               controller: _nameController,
               // Proporciona decoración al campo de texto, incluyendo una etiqueta.
-              decoration: InputDecoration(labelText: "Nombre de la Persona"),
+              decoration:
+                  const InputDecoration(labelText: "Nombre de la Persona"),
             ),
           ),
           // Un botón elevado de Material Design.
           ElevatedButton(
             // El texto que se muestra dentro del botón.
-            child: Text("Agregar Persona"),
+            child: const Text("Agregar Persona"),
             // La función que se llama cuando se presiona el botón.
             onPressed: _addPerson,
           ),
           // Un widget que crea una caja con un tamaño específico. Se utiliza aquí para añadir espacio vertical.
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           // Un widget de texto que muestra el número de personas.
           Text(
             // El texto a mostrar, que interpola la longitud de la lista de personas.
